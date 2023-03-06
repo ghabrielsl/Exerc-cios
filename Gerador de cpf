@@ -1,0 +1,36 @@
+import random
+cpf = ''
+for i in range(9):
+    cpf += str(random.randint(0,9))
+
+nove_digitos = cpf[:9]
+contagem_1 = 10
+digito_1 = ''
+soma_1 = 0
+for x in nove_digitos:
+    x = int(x)
+    soma_1 += x * contagem_1
+    
+    contagem_1 -= 1
+
+multiplicacao = soma_1 * 10
+resto_divisao = multiplicacao % 11
+
+digito_1 = resto_divisao if resto_divisao <= 9 else 0
+
+dez_digitos = nove_digitos + str(digito_1)
+
+# segundo digito
+seg_digito = 0
+contagem_2 = 11
+soma_2 = 0
+
+for digito in dez_digitos:
+    seg_digito += int(digito) * contagem_2
+    contagem_2 -= 1
+digito_2 = (seg_digito * 10) % 11
+digito_2 = digito_2 if digito_2 <= 9 else 0
+
+novo_cpf = nove_digitos + str(digito_1) + str(digito_2)
+
+print(novo_cpf)
